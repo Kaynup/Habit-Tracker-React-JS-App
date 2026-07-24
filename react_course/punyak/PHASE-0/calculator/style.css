@@ -1,0 +1,26 @@
+body {
+  display: flex;
+  font-family: 'Courier New', Courier, monospace;
+  background: #f4f4f4;
+}
+
+.calc {
+  background: white;
+  padding: 20px;
+}
+
+#display {
+  font-size: 24px;
+  text-align: right;
+  margin-bottom: 12px;
+}
+
+.btns {
+  display: grid;
+  grid-template-columns: repeat(4, 60px);
+  gap: 10px;
+}
+
+.zero {
+  grid-column: 2;
+}
