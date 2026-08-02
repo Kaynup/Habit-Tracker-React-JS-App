@@ -31,7 +31,7 @@ const element = <h1>Hello React</h1>;
 ```
 > Important:
 - Only one parent element is returned
-- JS expressions can be written inside `{}`
+- JS expressions can be written inside '{}'
 
 ```js
 const name = "Punyak"
