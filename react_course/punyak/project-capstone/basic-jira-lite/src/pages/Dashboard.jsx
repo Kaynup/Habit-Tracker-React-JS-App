@@ -27,7 +27,8 @@ function Dashboard() {
                 <button onClick={logoutAction}>Logout</button>
             </div>
         </header>
-        <div className="p-4 bg-gray-50 flex justify-end pb-0">
+        <div className="flex justify-between items-center p-4 bg-gray-50 pb-0">
+            <h2 className="text-xl font-bold text-gray-800">Test Project</h2>
             <Link to="/create" className="bg-green-600 text-white px-4 py-2 rounded shadow hover:bg-green-700 transition">
                 Create New Ticket
             </Link>
