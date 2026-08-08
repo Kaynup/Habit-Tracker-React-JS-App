@@ -64,11 +64,11 @@ function Dashboard() {
     };
 
     if (isPending) return <p>Loading tickets...</p>;
-    if (error) return <p>Error loading tickets</p>;
+    if (error) return <p className="text-red-500 font-bold p-4">Error loading tickets: {error.message}</p>;
     
-    const todos = data.filter(t => t.status === "Todo");
-    const inProgress = data.filter(t => t.status === "In Progress");
-    const done = data.filter(t => t.status === "Done");
+    const todos = (data || []).filter(t => t.status === "Todo");
+    const inProgress = (data || []).filter(t => t.status === "In Progress");
+    const done = (data || []).filter(t => t.status === "Done");
 
     const renderColumn = (title, statusName, tickets, actionLabel) => {
         const isSelecting = selectionColumn === statusName;

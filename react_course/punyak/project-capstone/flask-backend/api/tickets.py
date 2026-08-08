@@ -9,10 +9,10 @@ def manage_tickets():
         return jsonify({"error": "Unauthorized"}), 401
     
     if request.method == "GET":
-        user_tickets = Ticket.query.filter_by(user_id=session["user_id"]).all()
+        all_tickets = Ticket.query.all()
         return jsonify([
             {"id": t.id, "title": t.title, "status": t.status} 
-            for t in user_tickets
+            for t in all_tickets
         ])
         
     elif request.method == "POST":
@@ -40,8 +40,8 @@ def manage_bulk_tickets():
     if not ticket_ids:
         return jsonify({"error": "No ticket IDs provided"}), 400
         
-    # Security: Ensure all requested tickets belong to the current user
-    user_tickets = Ticket.query.filter(Ticket.id.in_(ticket_ids), Ticket.user_id == session["user_id"]).all()
+    # Allow any logged-in user to modify any ticket
+    user_tickets = Ticket.query.filter(Ticket.id.in_(ticket_ids)).all()
     valid_ids = [t.id for t in user_tickets]
     
     if request.method == "PUT":

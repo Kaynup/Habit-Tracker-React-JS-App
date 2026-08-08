@@ -17,12 +17,12 @@ const useAuthStore = create((set) => ({
             const data = await loginUser(email, password);
             set({ user: data.user.name });
         } catch (e) {
-            console.error(e);
+            throw e;
         }
     },
-    logout: async () => { 
+    logout: async () => {
         await logoutUser();
-        set({ user: null }); 
+        set({ user: null });
     }
 }));
 

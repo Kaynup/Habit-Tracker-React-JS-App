@@ -12,15 +12,11 @@ function Register() {
 
     async function handleSubmit(e) {
         e.preventDefault();
-        if (name.trim() === "" || email.trim() === "" || password === "") {
-            setError("All fields are required");
-            return;
-        }
         try {
             await registerAction(name, email, password);
             navigate("/"); // This will unmount the unauth routes automatically if user is set
         } catch (err) {
-            setError("Registration failed. Email might already exist.");
+            setError(err.message);
         }
     }
 

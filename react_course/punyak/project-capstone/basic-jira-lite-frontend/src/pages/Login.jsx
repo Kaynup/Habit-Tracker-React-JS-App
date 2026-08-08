@@ -3,18 +3,18 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 
 function Login() {
-    const [username, setUsername] = useState("");
+    const [usermail, setUsermail] = useState("");
     const [userpass, setUserpass] = useState("");
     const [error, setError] = useState("");
     const loginAction = useAuthStore((state) => state.login);
 
-    function handleSubmit(e) {
+    async function handleSubmit(e) {
         e.preventDefault();
-        if ((username.trim() === "" || userpass === "")) {
-            setError("Enter username and password");
-            return;
+        try {
+            await loginAction(usermail, userpass);
+        } catch (err) {
+            setError(err.message);
         }
-        loginAction(username);
     }
 
     return <div className="min-h-screen flex items-center justify-center">
@@ -24,8 +24,8 @@ function Login() {
             <form onSubmit={handleSubmit} className="flex flex-col gap-4">
                 <input
                     type="text"
-                    placeholder="Enter username"
-                    onChange={(e) => setUsername(e.target.value)}
+                    placeholder="Enter email"
+                    onChange={(e) => setUsermail(e.target.value)}
                     className="border rounded p-2" />
                 <input
                     type="password"

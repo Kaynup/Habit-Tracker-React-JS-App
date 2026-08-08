@@ -1,8 +1,12 @@
-const API_URL = "http://127.0.0.1:5000/api/tickets";
+const API_URL = "/api/tickets";
 
 export async function fetchTickets() {
     const res = await fetch(API_URL, { credentials: "include" });
-    if (!res.ok) throw new Error("Failed to fetch tickets");
+    if (!res.ok) {
+        let errStr = "Failed to fetch tickets";
+        try { const data = await res.json(); errStr = data.error || errStr; } catch(e) {}
+        throw new Error(errStr);
+    }
     return res.json();
 }
 

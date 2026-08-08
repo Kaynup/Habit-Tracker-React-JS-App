@@ -9,7 +9,8 @@ app.config['SECRET_KEY'] = 'dev-secret-key-super-safe'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///jira.db'
 
 # Important: supports_credentials=True is required for cookies/sessions across origins
-CORS(app, supports_credentials=True)
+CORS(app, supports_credentials=True,
+origins=["http://localhost:5173", "http://127.0.0.1:5173"])
 
 db.init_app(app)
 
