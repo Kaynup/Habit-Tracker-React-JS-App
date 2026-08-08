@@ -1,4 +1,5 @@
 import Login from "./pages/Login";
+import Register from "./pages/Register";
 import Dashboard from "./pages/Dashboard";
 import useAuthStore from "./store/authStore";
 import CreateTicket from "./pages/CreateTicket";
@@ -10,6 +11,7 @@ function App() {
         return <BrowserRouter>
             <Routes>
                 <Route path="/" element={<Login />} />
+                <Route path="/register" element={<Register />} />
             </Routes>
         </BrowserRouter>
     } else {

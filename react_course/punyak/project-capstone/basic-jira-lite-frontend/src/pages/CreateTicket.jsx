@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { createTicket } from "../api/mockApi";
+import { createTicket } from "../api/ticketsApi";
 
 export default function CreateTicket() {
     const [title, setTitle] = useState("");
@@ -13,13 +13,16 @@ export default function CreateTicket() {
         if (!title.trim() || !status.trim()) return;
 
         const newTicket = {
-            id: Math.floor(Math.random() * 10000), // [0, 1) * 10000
             title: title,
             status: status
         };
 
-        await createTicket(newTicket);
-        navigate("/");
+        try {
+            await createTicket(newTicket);
+            navigate("/");
+        } catch (error) {
+            console.error(error);
+        }
     };
 
     return (
