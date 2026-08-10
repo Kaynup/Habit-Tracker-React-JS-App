@@ -4,9 +4,12 @@ from models import db, User
 from api.auth import auth
 from api.tickets import tickets
 
+from datetime.datetime import timedelta
+
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'dev-secret-key-super-safe'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///jira.db'
+app.config['PERMANENT_SESSION_LEFETIME'] = timedelta(days=3)
 
 # Important: supports_credentials=True is required for cookies/sessions across origins
 CORS(app, supports_credentials=True,

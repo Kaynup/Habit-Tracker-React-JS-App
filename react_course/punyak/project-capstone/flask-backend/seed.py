@@ -9,6 +9,8 @@ def seed_database():
         user = User(name="t", email="t@t", password_hash=hashed_pw)
         db.session.add(user)
         db.session.commit()
+
+        print(f"Added user: t@t, t")
             
         atomic_tickets = [
             Ticket(title="Update favicon.ico", status="Done", user_id=user.id),
@@ -25,6 +27,7 @@ def seed_database():
         
         db.session.add_all(atomic_tickets)
         db.session.add_all(medium_tickets)
+        print("Added tickets")
         
         db.session.commit()
 

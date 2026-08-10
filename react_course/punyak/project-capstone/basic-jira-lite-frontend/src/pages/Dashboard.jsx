@@ -88,7 +88,7 @@ function Dashboard() {
                     )}
                 </div>
                 {tickets.map(ticket => (
-                    <div key={ticket.id} onClick={() => isSelecting && toggleTicket(ticket.id)} className={`bg-white p-3 rounded shadow-sm border ${isSelecting && selectedTicketIds.includes(ticket.id) ? 'border-blue-500 ring-1 ring-blue-500' : 'border-gray-200'} hover:shadow-md cursor-pointer transition flex justify-between items-center`}>
+                    <div key={ticket.id} onClick={() => isSelecting && toggleTicket(ticket.id)} className={`bg-white p-3 rounded border ${isSelecting && selectedTicketIds.includes(ticket.id) ? 'border-blue-500 ring-1 ring-blue-500' : 'border-gray-200'} hover:shadow-md cursor-pointer transition flex justify-between items-center`}>
                         <p className="font-medium text-gray-800">{ticket.title}</p>
                         {isSelecting && (
                             <input 

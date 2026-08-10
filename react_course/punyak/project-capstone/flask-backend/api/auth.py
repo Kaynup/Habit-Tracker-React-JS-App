@@ -18,6 +18,7 @@ def register():
     db.session.add(new_user)
     db.session.commit()
     
+    session.permanent = True
     session["user_id"] = new_user.id
     return jsonify({"message": "User registered successfully", "user": {"name": new_user.name}}), 201
 
@@ -31,6 +32,7 @@ def login():
     if not user or not check_password_hash(user.password_hash, data["password"]):
         return jsonify({"error": "Invalid credentials"}), 401
         
+    session.permanent = True
     session["user_id"] = user.id
     return jsonify({"message": "Login successful", "user": {"name": user.name}}), 200
 
