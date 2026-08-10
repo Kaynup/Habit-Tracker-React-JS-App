@@ -4,7 +4,7 @@ from models import db, User
 from api.auth import auth
 from api.tickets import tickets
 
-from datetime.datetime import timedelta
+from datetime import timedelta
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'dev-secret-key-super-safe'
